@@ -4,6 +4,7 @@ dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import authRoutes from './routes/auth';
+import profileRoutes from './routes/profile';
 
 const app = express();
 app.use(cors());
@@ -14,6 +15,7 @@ app.get('/', (_, res) => {
 });
 
 app.use('/api', authRoutes);
+app.use('/api', profileRoutes);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
