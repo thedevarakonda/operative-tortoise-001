@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './AuthForm.css';
+import { Link } from 'react-router-dom';
 
 interface AuthFormProps {
   type: 'login' | 'register';
@@ -15,33 +17,38 @@ const AuthForm: React.FC<AuthFormProps> = ({ type, onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>{type === 'login' ? 'Login' : 'Register'}</h2>
+    <div className="auth-container">
+      <form className="auth-form" onSubmit={handleSubmit}>
+        <h2>{type === 'login' ? 'Welcome Back 👋' : 'Create an Account 📝'}</h2>
 
-      <div>
-        <label>Email</label><br />
+        <label>Email</label>
         <input
           type="email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
           required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
-      </div>
 
-      <div>
-        <label>Password</label><br />
+        <label>Password</label>
         <input
           type="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
           required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
-      </div>
 
-      <button type="submit">
-        {type === 'login' ? 'Login' : 'Register'}
-      </button>
-    </form>
+        <button type="submit">{type === 'login' ? 'Log In' : 'Register'}</button>
+        <p className="switch-auth">
+        
+        {type === 'login' ? (
+            <>Don’t have an account? <Link to="/register">Register</Link></>
+            ) : (
+            <>Already have an account? <Link to="/login">Login</Link></>
+            )}
+        </p>
+        
+      </form>
+    </div>
   );
 };
 

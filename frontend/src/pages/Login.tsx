@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import AuthForm from '../components/AuthForm';
 
 const Login: React.FC = () => {
@@ -19,7 +20,11 @@ const Login: React.FC = () => {
     }
   };
 
-  return <AuthForm type="login" onSubmit={handleLogin} />;
+  return (
+    <div>
+      <AuthForm type="login" onSubmit={handleLogin} />
+    </div>
+  );
 };
 
 export default Login;
