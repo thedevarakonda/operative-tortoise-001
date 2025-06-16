@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import AuthForm from '../components/AuthForm';
 
 const Register: React.FC = () => {
@@ -9,15 +10,18 @@ const Register: React.FC = () => {
         email,
         password,
       });
-
       alert('Registration successful! You can now log in.');
-      // You might want to redirect to login page here
+      // Optionally navigate to login
     } catch (error: any) {
       alert(error.response?.data?.error || 'Registration failed');
     }
   };
 
-  return <AuthForm type="register" onSubmit={handleRegister} />;
+  return (
+    <div>
+      <AuthForm type="register" onSubmit={handleRegister} />
+    </div>
+  );
 };
 
 export default Register;
