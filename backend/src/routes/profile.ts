@@ -16,7 +16,7 @@ function getUserFromToken(req: any) {
 router.get('/profile', (req, res) => {
   try {
     const user = getUserFromToken(req);
-    const stmt = db.prepare('SELECT id, email, name, created_at FROM users WHERE id = ?');
+    const stmt = db.prepare('SELECT id, email, password_hash, created_at FROM users WHERE id = ?');
     const profile = stmt.get(user.id);
     res.json(profile);
   } catch (err) {
