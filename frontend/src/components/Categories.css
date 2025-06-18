@@ -1,0 +1,30 @@
+
+/* src/components/Categories.css */
+.categories-container {
+  display: flex;
+  justify-content: start;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: #f5f7fa;
+  overflow-x: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+.category-item {
+  padding: 10px 16px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-weight: 500;
+  color: #7e57c2;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(126, 87, 194, 0.1);
+}
+
+.category-item:hover {
+  background: #7e57c2;
+  color: white;
+  box-shadow: 0 4px 12px rgba(126, 87, 194, 0.2);
+}

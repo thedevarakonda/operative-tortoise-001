@@ -2,74 +2,78 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 2rem;
-  background-color: #fff;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid #ddd;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.logo {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #7e57c2;
-}
-
-.search-bar {
-  flex: 1;
-  margin: 0 1.5rem;
-  padding: 10px 14px;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  font-size: 1rem;
-  max-width: 500px;
-}
-
-.nav-links a {
-  color: #7e57c2;
-  margin-left: 1.2rem;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  text-decoration: underline;
-}
-
-.logout-button {
-  background: none;
-  border: none;
-  color: #7e57c2;
-  font-weight: 500;
-  cursor: pointer;
-  margin-left: 1rem;
-  font-size: 1rem;
-}
-
-.logout-button:hover {
-  text-decoration: underline;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background: #7e57c2;
   color: white;
   padding: 1rem 2rem;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
 }
 
+.logo,
 .navbar-logo {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: white;
   cursor: pointer;
 }
 
+/* Search Bar Wrapper */
+.navbar-search {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 1rem auto;
+  max-width: 500px;
+  width: 100%;
+}
+
+/* Search Input Field */
+.navbar-search input {
+  padding: 10px 16px;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  background-color: #f9f6f9;
+  color: #333;
+  transition: border 0.3s, box-shadow 0.3s, transform 0.2s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 1;
+}
+
+.navbar-search input:focus,
+.navbar-search input:hover {
+  border: 2px solid #7e57c2;
+  box-shadow: 0 4px 16px rgba(126, 87, 194, 0.4);
+  transform: translateY(-2px);
+  outline: none;
+  z-index: 10;
+}
+
+.navbar-search input::placeholder {
+  color: #999;
+}
+
+/* Search Icon Inside Input */
+.navbar-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #888;
+  pointer-events: none;
+}
+
+/* Nav Links */
 .navbar-links {
+  display: flex;
+  align-items: center;
   position: relative;
 }
 
@@ -81,6 +85,10 @@
   border-radius: 8px;
   cursor: pointer;
   font-weight: 500;
+}
+
+.login-button:hover {
+  background-color: #f1e6ff;
 }
 
 .navbar-profile-container {
