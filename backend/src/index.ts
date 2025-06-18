@@ -5,6 +5,8 @@ import express from 'express';
 import cors from 'cors';
 import authRoutes from './routes/auth';
 import profileRoutes from './routes/profile';
+import productsRoutes from './routes/products';       // ✅ new
+import categoriesRoutes from './routes/categories';   // ✅ new
 
 const app = express();
 app.use(cors());
@@ -16,6 +18,8 @@ app.get('/', (_, res) => {
 
 app.use('/api', authRoutes);
 app.use('/api', profileRoutes);
+app.use('/api/products', productsRoutes);       // ✅ mount it
+app.use('/api/categories', categoriesRoutes);   // ✅ mount it
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

@@ -138,3 +138,15 @@
   font-size: 0.9rem;
   margin-top: auto;
 }
+
+.selected-category-banner {
+  text-align: center;
+  background-color: #ede7f6;
+  color: #5e35b1;
+  font-weight: 500;
+  padding: 0.75rem;
+  margin: 1rem auto;
+  border-radius: 12px;
+  max-width: 600px;
+}
+
