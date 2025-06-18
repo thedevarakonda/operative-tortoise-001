@@ -2,11 +2,13 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './Home.css';
+import Categories from '../components/Categories';
 
 const Home: React.FC = () => {
   return (
     <div className="home-container">
       <Navbar />
+      <Categories/>
       <div className="hero">
         <div className="hero-content">
           <h1>Welcome to ShopWise</h1>

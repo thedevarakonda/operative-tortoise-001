@@ -6,10 +6,17 @@ const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const [showDropdown, setShowDropdown] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
+  };
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Later: navigate(`/search?query=${searchTerm}`);
+    alert(`Searching for "${searchTerm}"...`);
   };
 
   return (
@@ -17,6 +24,16 @@ const Navbar: React.FC = () => {
       <div className="logo" onClick={() => navigate('/')}>
         🛍️ ShopWise
       </div>
+
+      <form className="navbar-search" onSubmit={handleSearch}>
+        {/* <span className="navbar-search-icon">🔍</span> */}
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </form>
 
       <div className="navbar-links">
         {token ? (
