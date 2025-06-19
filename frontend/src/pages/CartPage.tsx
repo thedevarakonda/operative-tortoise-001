@@ -3,11 +3,11 @@ import { useCart,CartItem } from '../context/CartContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './CartPage.css';
-
+import { useNavigate } from 'react-router-dom';
 
 const CartPage: React.FC = () => {
   const { cartItems, removeFromCart, updateQuantity } = useCart();
-
+  const navigate = useNavigate();
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
@@ -36,7 +36,7 @@ const CartPage: React.FC = () => {
             ))}
             <div className="cart-summary">
               <h3>Total: ₹{total.toFixed(2)}</h3>
-              <button className="checkout-btn">Checkout</button>
+              <button className="checkout-btn" onClick={()=> navigate('/checkout')}>Checkout</button>
             </div>
           </div>
         )}

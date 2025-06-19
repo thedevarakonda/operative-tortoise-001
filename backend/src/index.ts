@@ -8,6 +8,7 @@ import profileRoutes from './routes/profile';
 import productsRoutes from './routes/products';       // ✅ new
 import categoriesRoutes from './routes/categories';   // ✅ new
 import cartRoutes from './routes/carts';
+import ordersRoutes from './routes/orders'
 
 const app = express();
 app.use(cors());
@@ -22,6 +23,7 @@ app.use('/api', profileRoutes);
 app.use('/api/products', productsRoutes);       // ✅ mount it
 app.use('/api/categories', categoriesRoutes);   // ✅ mount it
 app.use('/api/cart',cartRoutes)
+app.use('/api/orders',ordersRoutes);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
