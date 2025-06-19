@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import './CategoryPage.css';
 import '../components/ProductCard.css'
 import StarRating from '../components/StarRating';
+import { useCart } from '../context/CartContext';
 
 interface Product {
   id: number;
@@ -20,6 +21,8 @@ const CategoryPage: React.FC = () => {
   const { categoryName } = useParams();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const { addToCart } = useCart();
+
 
   useEffect(() => {
     axios
@@ -53,6 +56,9 @@ const CategoryPage: React.FC = () => {
                 <h3>{p.title}</h3>
                 <p>₹{p.price}</p>
                 <StarRating rating={p.rating} />
+                <button className="add-cart" onClick={() => addToCart({ ...p, quantity: 1 })}>
+                  Add to Cart
+                </button>
               </div>
             ))}
           </div>
