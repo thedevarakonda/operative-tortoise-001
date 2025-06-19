@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext'; // ✅ Import cart context
 import './Navbar.css';
 
 const Navbar: React.FC = () => {
@@ -8,6 +9,9 @@ const Navbar: React.FC = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
+  const { cartItems } = useCart(); // ✅ Get cart from context
+  const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0); // ✅ total quantity
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
@@ -15,7 +19,6 @@ const Navbar: React.FC = () => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // Later: navigate(`/search?query=${searchTerm}`);
     alert(`Searching for "${searchTerm}"...`);
   };
 
@@ -26,7 +29,6 @@ const Navbar: React.FC = () => {
       </div>
 
       <form className="navbar-search" onSubmit={handleSearch}>
-        {/* <span className="navbar-search-icon">🔍</span> */}
         <input
           type="text"
           placeholder="Search products..."
@@ -36,6 +38,15 @@ const Navbar: React.FC = () => {
       </form>
 
       <div className="navbar-links">
+        {/* ✅ Cart Icon with Count */}
+        {token && (
+          <div className="cart-icon" onClick={() => navigate('/cart')}>
+            🛒
+            {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+          </div>
+        )}
+
+        {/* 👤 User Icon */}
         {token ? (
           <div className="navbar-profile-container">
             <div
