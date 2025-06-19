@@ -7,6 +7,7 @@ import Profile from './pages/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
 import CategoryPage from './pages/CategoryPage';
 import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
 function App() {
   return (
     <Routes>
@@ -23,6 +24,7 @@ function App() {
         />
       <Route path="/category/:categoryName" element={<CategoryPage />} />
       <Route path="/cart" element={<CartPage />} />
+      <Route path="/checkout" element={<CheckoutPage />} />
     </Routes>
   );
 }

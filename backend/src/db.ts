@@ -51,6 +51,36 @@ db.exec(`
   );
 `);
 
+// Add these table creations after your existing cart_items table in db.ts
+
+// Create orders table
+db.exec(`
+  CREATE TABLE IF NOT EXISTS orders (
+    order_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    total_amount REAL NOT NULL CHECK(total_amount >= 0),
+    order_status TEXT DEFAULT 'pending',
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    updated_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+  );
+`);
+
+// Create order_items table
+db.exec(`
+  CREATE TABLE IF NOT EXISTS order_items (
+    order_item_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    order_id INTEGER NOT NULL,
+    product_id INTEGER NOT NULL,
+    quantity INTEGER NOT NULL CHECK(quantity > 0),
+    unit_price REAL NOT NULL CHECK(unit_price >= 0),
+    product_title TEXT NOT NULL,
+    added_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(id)
+  );
+`);
+
 // Seed categories if empty
 const categoryCountResult = db.prepare('SELECT COUNT(*) AS count FROM categories').get() as { count: number };
 const categoryCount = categoryCountResult.count;
